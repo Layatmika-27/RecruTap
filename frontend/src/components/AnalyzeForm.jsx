@@ -1,3 +1,4 @@
+import api from "../services/api";
 import { useState } from "react";
 
 function AnalyzeForm() {
@@ -8,6 +9,7 @@ function AnalyzeForm() {
     description: "",
   });
 
+  // Handles typing in the form
   function handleChange(event) {
     setFormData({
       ...formData,
@@ -15,55 +17,66 @@ function AnalyzeForm() {
     });
   }
 
-  function handleSubmit(event) {
+  // Handles form submission
+  async function handleSubmit(event) {
     event.preventDefault();
 
-    console.log(formData);
+    try {
+      const response = await api.post(
+        "/analyze",
+        formData
+      );
 
-    alert("Analysis request sent!");
+      alert(
+        `Risk Score: ${response.data.risk_score}\nRecommendation: ${response.data.recommendation}`
+      );
+
+      console.log(response.data);
+
+    } catch (error) {
+      console.error(error);
+
+      alert("Backend connection failed.");
+    }
   }
 
   return (
     <form className="analyze-form" onSubmit={handleSubmit}>
 
       <label>Company Name</label>
-
       <input
         type="text"
         name="company"
-        placeholder="Google"
         value={formData.company}
         onChange={handleChange}
+        placeholder="Google"
       />
 
       <label>Job Title</label>
-
       <input
         type="text"
         name="jobTitle"
-        placeholder="Data Analyst Intern"
         value={formData.jobTitle}
         onChange={handleChange}
+        placeholder="Data Analyst Intern"
       />
 
       <label>Job URL</label>
-
       <input
         type="url"
         name="jobUrl"
-        placeholder="https://..."
         value={formData.jobUrl}
         onChange={handleChange}
+        placeholder="https://..."
       />
 
       <label>Job Description</label>
-
       <textarea
         rows="8"
         name="description"
-        placeholder="Paste the complete job description..."
         value={formData.description}
         onChange={handleChange}
+        placeholder="Paste the complete job description..."
       />
 
       <button type="submit">
