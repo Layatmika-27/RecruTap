@@ -1,5 +1,6 @@
 import api from "../services/api";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AnalyzeForm() {
   const [formData, setFormData] = useState({
@@ -8,6 +9,8 @@ function AnalyzeForm() {
     jobUrl: "",
     description: "",
   });
+
+  const navigate = useNavigate();
 
   // Handles typing in the form
   function handleChange(event) {
@@ -27,9 +30,11 @@ function AnalyzeForm() {
         formData
       );
 
-      alert(
-        `Risk Score: ${response.data.risk_score}\nRecommendation: ${response.data.recommendation}`
-      );
+console.log("Navigate is about to happen");
+
+  navigate("/results", {
+  state: response.data,
+});
 
       console.log(response.data);
 
