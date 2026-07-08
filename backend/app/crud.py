@@ -11,7 +11,7 @@ def create_job(db: Session, job_data: dict):
         description=job_data["description"],
         risk_score=job_data["risk_score"],
         recommendation=job_data["recommendation"],
-        reasons=", ".join(job_data["reasons"])
+        reasons=(job_data["reasons"])
     )
 
     db.add(job)

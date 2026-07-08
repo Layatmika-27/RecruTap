@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, DateTime
+from sqlalchemy import Column, Integer, String, Text, DateTime, JSON
 from datetime import datetime
 
 from .database import Base
@@ -21,6 +21,6 @@ class Job(Base):
 
     recommendation = Column(String)
 
-    reasons = Column(Text)
+    reasons = Column(JSON)
 
     created_at = Column(DateTime, default=datetime.utcnow)
