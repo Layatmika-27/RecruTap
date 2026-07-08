@@ -1,3 +1,4 @@
+import "./AnalyzeForm.css";
 import api from "../services/api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -46,6 +47,15 @@ console.log("Navigate is about to happen");
   }
 
   return (
+  <div className="analyze-page">
+
+    <h1>Analyze a Job Posting</h1>
+
+    <p>
+      Paste the job details below and let RecruTap evaluate the
+      legitimacy of the opportunity.
+    </p>
+
     <form className="analyze-form" onSubmit={handleSubmit}>
 
       <label>Company Name</label>
@@ -76,6 +86,7 @@ console.log("Navigate is about to happen");
       />
 
       <label>Job Description</label>
+
       <textarea
         rows="8"
         name="description"
@@ -84,12 +95,16 @@ console.log("Navigate is about to happen");
         placeholder="Paste the complete job description..."
       />
 
-      <button type="submit">
+      <button
+        className="primary-btn"
+        type="submit"
+      >
         Analyze Job
       </button>
 
     </form>
-  );
-}
 
+  </div>
+);
+}
 export default AnalyzeForm;

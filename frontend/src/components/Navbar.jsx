@@ -1,9 +1,14 @@
+import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { ShieldCheck } from "lucide-react";
 
 function Navbar() {
   return (
     <nav className="navbar">
-      <h2 className="logo">RecruTap</h2>
+      <Link className="logo" to="/">
+        <ShieldCheck size={30} />
+        <span>RecruTap</span>
+      </Link>
 
       <div className="nav-links">
         <Link to="/">Home</Link>

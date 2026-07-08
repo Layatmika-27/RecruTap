@@ -1,65 +1,74 @@
 import Navbar from "../components/Navbar";
-import "../styles/results.css";
-
 import { useLocation } from "react-router-dom";
 
 function Results() {
 
-  const location = useLocation();
+  const { state } = useLocation();
 
-  const result = location.state;
-
-  if (!result) {
+  if (!state) {
     return (
       <>
         <Navbar />
 
-        <div className="results-container">
-          <h1>No analysis found.</h1>
-          <p>Please analyze a job first.</p>
+        <div
+          style={{
+            padding: "100px 8%",
+          }}
+        >
+          <h2>No analysis found.</h2>
         </div>
       </>
     );
   }
 
   return (
-    <>
-      <Navbar />
+  <div className="page">
+    <Navbar />
 
-      <div className="results-container">
+    <div
+      style={{
+        padding: "70px 8%",
+        minHeight: "100vh",
+      }}
+    >
+      <h1>Job Analysis Report</h1>
 
-        <h1>Job Analysis Report</h1>
+      <div
+        style={{
+          marginTop: "40px",
+          background: "#fff",
+          borderRadius: "20px",
+          padding: "40px",
+          boxShadow: "0 10px 25px rgba(0,0,0,.08)",
+        }}
+      >
+        <h2>{state.company}</h2>
 
-        <div className="result-card">
+        <br />
 
-          <h2>{result.company}</h2>
+        <h3>Risk Score</h3>
 
-          <h3>Risk Score</h3>
+        <h1>{state.risk_score} / 100</h1>
 
-          <h1>{result.risk_score} / 100</h1>
+        <br />
 
-          <h3>Recommendation</h3>
+        <h3>Recommendation</h3>
 
-          <p>{result.recommendation}</p>
+        <p>{state.recommendation}</p>
 
-          <h3>Detected Risks</h3>
+        <br />
 
-          <ul>
+        <h3>Detected Risks</h3>
 
-            {result.reasons.map((reason, index) => (
-
-              <li key={index}>{reason}</li>
-
-            ))}
-
-          </ul>
-
-        </div>
-
+        <ul>
+          {state.reasons.map((reason, index) => (
+            <li key={index}>{reason}</li>
+          ))}
+        </ul>
       </div>
-
-    </>
-  );
+    </div>
+  </div>
+);
 }
 
 export default Results;
