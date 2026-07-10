@@ -1,0 +1,106 @@
+.analyze-page{
+
+    max-width:900px;
+
+    margin:0 auto;
+
+    padding:120px 24px 80px;
+
+}
+
+.analyze-page h1{
+
+    font-size:3rem;
+
+    color:var(--text);
+
+    margin-bottom:14px;
+
+    font-weight:800;
+
+}
+
+.analyze-page p{
+
+    color:var(--text-light);
+
+    margin-bottom:40px;
+
+    font-size:1.05rem;
+
+}
+
+.analyze-form{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    padding:40px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.analyze-form label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    margin-top:24px;
+
+    color:var(--text);
+
+    font-weight:600;
+
+}
+
+.analyze-form input,
+.analyze-form textarea{
+
+    width:100%;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    border:1px solid var(--border);
+
+    background:var(--surface2);
+
+    color:var(--text);
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+.analyze-form input::placeholder,
+.analyze-form textarea::placeholder{
+
+    color:var(--text-light);
+
+}
+
+.analyze-form input:focus,
+.analyze-form textarea:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(37,99,235,.15);
+
+}
+
+.analyze-form button{
+
+    margin-top:32px;
+
+    width:100%;
+
+}
