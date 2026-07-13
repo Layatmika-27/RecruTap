@@ -21,6 +21,6 @@ class Job(Base):
 
     recommendation = Column(String)
 
-    reasons = Column(JSON)
+    warning_signs = Column(JSON)
 
     created_at = Column(DateTime, default=datetime.utcnow)

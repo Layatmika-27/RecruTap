@@ -22,53 +22,72 @@ function Results() {
   }
 
   return (
-  <div className="page">
-    <Navbar />
-
-    <div
-      style={{
-        padding: "70px 8%",
-        minHeight: "100vh",
-      }}
-    >
-      <h1>Job Analysis Report</h1>
+    <div className="page">
+      <Navbar />
 
       <div
         style={{
-          marginTop: "40px",
-          background: "#fff",
-          borderRadius: "20px",
-          padding: "40px",
-          boxShadow: "0 10px 25px rgba(0,0,0,.08)",
+          padding: "70px 8%",
+          minHeight: "100vh",
         }}
       >
-        <h2>{state.company}</h2>
+        <h1>Job Analysis Report</h1>
 
-        <br />
+        <div
+          style={{
+            marginTop: "40px",
+            background: "#fff",
+            borderRadius: "20px",
+            padding: "40px",
+            boxShadow: "0 10px 25px rgba(0,0,0,.08)",
+          }}
+        >
+          <h2>{state.company}</h2>
 
-        <h3>Risk Score</h3>
+          <br />
 
-        <h1>{state.risk_score} / 100</h1>
+          <h3>Prediction</h3>
+          <p>{state.prediction}</p>
 
-        <br />
+          <br />
 
-        <h3>Recommendation</h3>
+          <h3>Risk Score</h3>
+          <h1>{state.risk_score} / 100</h1>
 
-        <p>{state.recommendation}</p>
+          <br />
 
-        <br />
+          <h3>Confidence</h3>
+          <p>{state.confidence}%</p>
 
-        <h3>Detected Risks</h3>
+          <br />
 
-        <ul>
-          {state.reasons.map((reason, index) => (
-            <li key={index}>{reason}</li>
-          ))}
-        </ul>
+
+          <h3>Recommendation</h3>
+          <p>{state.recommendation}</p>
+
+          <br />
+
+          <h3>Warning Signs</h3>
+
+          <ul>
+            {Array.isArray(state.warning_signs) ? (
+  state.warning_signs.map((warning, index) => (
+    <li key={index}>{warning}</li>
+  ))
+) : (
+  <li>No warning signs detected.</li>
+)}
+          </ul>
+
+          <br />
+
+          <h3>Analysis Time</h3>
+          <p>{state.analysis_time}</p>
+
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 }
 
 export default Results;
